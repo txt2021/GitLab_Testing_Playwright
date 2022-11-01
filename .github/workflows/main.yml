@@ -17,12 +17,12 @@ jobs:
       run: npm ci
     - name: Install Playwright 
       run: npx playwright install --with-deps
-    - name: Run all tests
+    - name: Run all tests with Allure
       run: npm run test-run
     - uses: actions/checkout@v2
       if: always()
       with:
-        repository: txt2021/Playwright_Redmine_Allure
+        repository: txt2021/GitLab_Testing_Playwright
         ref:  report
         path: ./allure-report
     - name: Generate Allure Report
@@ -34,7 +34,7 @@ jobs:
         name: report
         path: allure-report/
         retention-days: 30
-    - name: Push to repository
+    - name: Push to repository Allure report
       uses: cpina/github-action-push-to-another-repository@main
       if: always()
       env:
@@ -45,3 +45,28 @@ jobs:
         destination-repository-name: 'GitLab_Testing_Playwright'
         user-email: txt2021@gmail.com
         target-branch: report
+    - name: Run all tests with HTML reporter
+      run: npm run test-run-html
+    - uses: actions/checkout@v2
+      if: always()
+      with:
+        repository: txt2021/GitLab_Testing_Playwright
+        ref:  html-report
+        path: ./playwright-report   
+    - uses: actions/upload-artifact@v2
+      if: always()
+      with:
+        name: html-report
+        path: playwright-report/
+        retention-days: 30
+    - name: Push to repository HTML report
+      uses: cpina/github-action-push-to-another-repository@main
+      if: always()
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.SECRET_TOKEN }}
+      with:
+        source-directory: 'playwright-report'
+        destination-github-username: 'txt2021'
+        destination-repository-name: 'GitLab_Testing_Playwright'
+        user-email: txt2021@gmail.com
+        target-branch: html-report
