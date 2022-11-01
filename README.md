@@ -4,7 +4,7 @@ Project for testing GitLab website: https://about.gitlab.com/
 
 20 test cases for sign up, search, navigation, support services, free trial and talk to an experts areas
 
-This project uses Allure and HTML reporters
+This project uses Allure reporter
 
 ## Requirements
 playwright: 1.25
@@ -21,21 +21,13 @@ npm install
 ```
 
 ## Run
+
 ```
 npm run test-run
 ```
 
 ## Report
 
-HTML report will be generated after execution of 
-```
-npm run test-run-html
-```
-To open HTML report
-
-```
-npm run report-html-open
-```
 
 To create Allure report
 
