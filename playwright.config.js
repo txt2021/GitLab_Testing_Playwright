@@ -17,10 +17,7 @@ const config = {
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [
-    ["allure-playwright"],
-    ['html', { outputFolder: 'playwright-report' }]
-  ],
+  reporter: "allure-playwright",
   use: {
     headless: true,
     viewport: { width: 1280, height: 720 },
