@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test-run": "npx playwright test --reporter=allure-playwright",
+    "test-run": "npx playwright test",
     "test-run-html":"npx playwright test --reporter=html",
     "report-generate":"npx allure generate allure-results --clean",
     "report-open":"npx allure open allure-report",
