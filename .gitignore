@@ -3,3 +3,8 @@ node_modules/
 /playwright-report/
 /playwright/.cache/
 Test_casess.xlsx
+/allure-report/
+allure-report
+allure-results
+/allure-results/
+/playwright-report/
